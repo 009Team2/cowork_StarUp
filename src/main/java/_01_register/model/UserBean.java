@@ -3,8 +3,6 @@ package _01_register.model;
 import java.io.Serializable;
 import java.sql.Blob;
 import java.sql.Clob;
-import java.sql.Date;
-import java.sql.Timestamp;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -13,7 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+
+import _06_works.model.WorksBean;
 
 
 
@@ -27,18 +26,18 @@ public class UserBean implements Serializable {
 		String name;
 		String nickname;
 		String gender;
-		Date birthday;
+		String birthday; // 1029改String
 		String phone;
 		String address;
 		String photoName;
 		Blob photo;
 		Clob introduction;
-		Timestamp regTime;
+		String regTime; // 1029改String
 		long unpaid_amount;
-//		Set<WorksBean> works = new LinkedHashSet<>();
+//		Set<WorksBean> wb = new LinkedHashSet<>();
 		
-		public UserBean(Integer user_id, String account, String password, String name, String nickname, String gender, Date birthday,
-				String phone, String address, Blob photo, String photoName, Clob introduction, Timestamp regTime, long unpaid_amount) 
+		public UserBean(Integer user_id, String account, String password, String name, String nickname, String gender, String birthday,
+				String phone, String address, Blob photo, String photoName, Clob introduction, String regTime, long unpaid_amount) 
 		{
 			super();
 			this.user_id = user_id;
@@ -58,8 +57,8 @@ public class UserBean implements Serializable {
 		}
 		
 		// without photoName
-		public UserBean(Integer user_id, String account, String password, String name, String nickname, String gender, Date birthday,
-				String phone, String address, Blob photo, Clob introduction, Timestamp regTime, long unpaid_amount) {
+		public UserBean(Integer user_id, String account, String password, String name, String nickname, String gender, String birthday,
+				String phone, String address, Blob photo, Clob introduction, String regTime, long unpaid_amount) {
 			super();
 			this.user_id = user_id;
 			this.account = account;
@@ -124,10 +123,10 @@ public class UserBean implements Serializable {
 			this.gender = gender;
 		}
 		
-		public Date getBirthday() {
+		public String getBirthday() { // 1029改String
 			return birthday;
 		}
-		public void setBirthday(Date birthday) {
+		public void setBirthday(String birthday) { // 1029改String
 			this.birthday = birthday;
 		}
 		
@@ -172,11 +171,11 @@ public class UserBean implements Serializable {
 			this.introduction = introduction;
 		}
 	
-		public Timestamp getRegTime() {
+		public String getRegTime() { // 1029改String
 			return regTime;
 		}
 
-		public void setRegTime(Timestamp regTime) {
+		public void setRegTime(String regTime) { // 1029改String
 			this.regTime = regTime;
 		}
 		

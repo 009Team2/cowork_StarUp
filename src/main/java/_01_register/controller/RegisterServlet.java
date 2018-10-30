@@ -192,17 +192,19 @@ public class RegisterServlet extends HttpServlet {
 					GlobalService.encryptString(password));
 					
 					Timestamp ts = new java.sql.Timestamp(System.currentTimeMillis());
+					String regday = ts.toString(); // 1029改String
+					
 					Blob blob = SystemUtils2018.fileToBlob(is, sizeInBytes);
 					
-					
-					
 					Date bir = java.sql.Date.valueOf(birthday);
+					String bday = bir.toString(); // 1029改String
+					
 					UserFileIO mfio = new UserFileIO("c:\\data\\introduction.txt");
 					mfio.insertUser(introduction);
 					Clob clob = SystemUtils2018.fileToClob("c:\\data\\introduction.txt");
 					File introText = new File("c:\\data\\introduction.txt");// create file object
 					
-					UserBean mem = new UserBean(null, account,password,name,nickname,gender,bir,phone,address,blob,photoName,clob,ts,0);					
+					UserBean mem = new UserBean(null, account,password,name,nickname,gender,bday,phone,address,blob,photoName,clob,regday,0); // 1029改String					
 					int n = service.saveUser(mem);
 					introText.delete();// call file method delete() to delete introduction in text file
 					if (n == 1) {

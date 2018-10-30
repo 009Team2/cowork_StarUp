@@ -2,13 +2,16 @@ package _06_works.model;
 
 import java.io.Serializable;
 import java.sql.Blob;
-import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import _01_register.model.UserBean;
 
 @Entity
 @Table(name="works")
@@ -20,7 +23,7 @@ public class WorksBean implements Serializable{
 	String worksIntro;
 	String worksImgName;
 	Blob worksImg;
-	Timestamp worksUpDate;
+	String worksUpDate; // 1029改String
 	
 	//進階
 	String caption_1;//標題_1
@@ -32,8 +35,11 @@ public class WorksBean implements Serializable{
 	String detail_2;//內文_1
 	String captionImgName_2;//照片_1
 	Blob captionImg_2;
+	
+	Integer user_id; // 1030改,為了匯works資料所以新增
+	
 	public WorksBean(Integer works_id, String worksName, String worksIntro, String worksImgName, Blob worksImg,
-			Timestamp worksUpDate, String caption_1, String detail_1, String captionImgName_1, Blob captionImg_1,
+			String worksUpDate, String caption_1, String detail_1, String captionImgName_1, Blob captionImg_1,
 			String caption_2, String detail_2, String captionImgName_2, Blob captionImg_2) {
 		super();
 		this.works_id = works_id;
@@ -54,6 +60,28 @@ public class WorksBean implements Serializable{
 	
 	public WorksBean() {}
 	
+	// 1030改,為了匯works資料所以新增建構子
+	public WorksBean(Integer works_id, String worksName, String worksIntro, String worksImgName, Blob worksImg,
+			String worksUpDate, String caption_1, String detail_1, String captionImgName_1, Blob captionImg_1,
+			String caption_2, String detail_2, String captionImgName_2, Blob captionImg_2, Integer user_id) {
+		super();
+		this.works_id = works_id;
+		this.worksName = worksName;
+		this.worksIntro = worksIntro;
+		this.worksImgName = worksImgName;
+		this.worksImg = worksImg;
+		this.worksUpDate = worksUpDate;
+		this.caption_1 = caption_1;
+		this.detail_1 = detail_1;
+		this.captionImgName_1 = captionImgName_1;
+		this.captionImg_1 = captionImg_1;
+		this.caption_2 = caption_2;
+		this.detail_2 = detail_2;
+		this.captionImgName_2 = captionImgName_2;
+		this.captionImg_2 = captionImg_2;
+		this.user_id = user_id;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getWorks_id() {
@@ -96,11 +124,11 @@ public class WorksBean implements Serializable{
 		this.worksImg = worksImg;
 	}
 
-	public Timestamp getWorksUpDate() {
+	public String getWorksUpDate() { // 1029改String
 		return worksUpDate;
 	}
 
-	public void setWorksUpDate(Timestamp worksUpDate) {
+	public void setWorksUpDate(String worksUpDate) { // 1029改String
 		this.worksUpDate = worksUpDate;
 	}
 
@@ -168,7 +196,13 @@ public class WorksBean implements Serializable{
 		this.captionImg_2 = captionImg_2;
 	}
 
-	
+	public Integer getUser_id() { // 1030改,為了匯works資料所以新增
+		return user_id;
+	}
+
+	public void setUser_id(Integer user_id) { // 1030改,為了匯works資料所以新增
+		this.user_id = user_id;
+	}
 	
 	
 }

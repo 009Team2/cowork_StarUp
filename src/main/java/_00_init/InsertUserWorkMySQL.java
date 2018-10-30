@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.sql.Blob;
+import java.sql.Clob;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -14,9 +15,10 @@ import org.hibernate.Transaction;
 
 import _00_init.util.HibernateUtil;
 import _00_init.util.SystemUtils2018;
-import _03_listProducts.model.ProductBean;
+import _01_register.model.UserBean;
+import _06_works.model.WorksBean;
 
-public class InsertProductMySQL {
+public class InsertUserWorkMySQL {
 	public static final String UTF8_BOM = "\uFEFF"; // 定義 UTF-8的BOM字元
 
 	public static void main(String args[]) {
@@ -28,12 +30,12 @@ public class InsertProductMySQL {
 		try {
 			tx = session.beginTransaction();
 
-			File file = new File("data/product.dat");
+			File file = new File("data/userWork.dat");
 			// 由"data/Product.dat"逐筆讀入Product表格內的初始資料，然後依序新增
 			// 到Product表格中
 			try (FileInputStream fis = new FileInputStream(file);
-					InputStreamReader isr = new InputStreamReader(fis, "UTF8");
-					BufferedReader br = new BufferedReader(isr);) 
+					InputStreamReader isr55 = new InputStreamReader(fis, "UTF8");
+					BufferedReader br = new BufferedReader(isr55);) 
 		    {
 				while ((line = br.readLine()) != null) {
 					n = 0;
@@ -42,32 +44,37 @@ public class InsertProductMySQL {
 						line = line.substring(1);
 					}
 					String[] token = line.split("\\|");
-					ProductBean p = new ProductBean();
+					WorksBean w = new WorksBean();
 					SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
 					String date = df.format(new Date());// new Date()为获取当前系统时间
-					p.setProdName(token[0]);
-					p.setProdType(token[1]);
-					// 讀取圖片檔
-					Blob blob = SystemUtils2018.fileToBlob(token[2].trim());
-					p.setProdImg(blob);
-					p.setProdImgName(token[3]);					
-					p.setProdStock(Integer.parseInt(token[4].trim()));
-					p.setProdPrice(Integer.parseInt(token[5].trim()));
-					p.setProdCompany(token[6]);
-					p.setProdIntro(token[7]);
-					p.setProdCategory(token[8]);
-					p.setGameTime(token[9]);
-					p.setPlayerAge(token[10]);
-					p.setPlayerNum(token[11]);
-					p.setProdUpDate(date);
-					session.save(p);
+					w.setWorksName(token[0]);
+					w.setWorksIntro(token[1]);
+					w.setWorksImgName(token[2]);
+					// 讀取圖片檔01
+					Blob blob = SystemUtils2018.fileToBlob(token[3].trim());				
+					w.setWorksImg(blob);
+					w.setCaption_1(token[4]);
+					w.setDetail_1(token[5]);
+					w.setCaptionImgName_1(token[6]);
+					// 讀取圖片檔02
+					Blob blob_1 = SystemUtils2018.fileToBlob(token[7].trim());
+					w.setCaptionImg_1(blob_1);
+					w.setCaption_2(token[8]);
+					w.setDetail_2(token[9]);
+					w.setCaptionImgName_2(token[10]);
+					// 讀取圖片檔02
+					Blob blob_2 = SystemUtils2018.fileToBlob(token[11].trim());
+					w.setCaptionImg_2(blob_2);
+					w.setUser_id(Integer.parseInt(token[12].trim())); // 1030改,為了匯works資料所以新增
+					w.setWorksUpDate(date);
+					session.save(w);
 					n++;
-					System.out.println("新增一筆Product紀錄是否成功=" + n);
+					System.out.println("新增一筆User紀錄是否成功=" + n);
 				}
 				// 印出資料新增成功的訊息
-				System.out.println("Product資料新增成功");
+				System.out.println("User資料新增成功");
 			} catch (Exception e) {
-				System.err.println("新建Product表格時發生IO例外: " + e.getMessage());
+				System.err.println("新建User表格時發生IO例外: " + e.getMessage());
 			}
 			tx.commit();
 		} catch (Exception ex) {

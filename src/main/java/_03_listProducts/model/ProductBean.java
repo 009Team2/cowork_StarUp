@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="product")
@@ -29,10 +30,15 @@ public class ProductBean implements Serializable {
 	private String prodOutDate;
 	private String prodCategory;
 	private Integer prodRate;
+	private String gameTime;
+	private String playerAge;
+	private String playerNum;
+	
 
 	public ProductBean(Integer prod_id, String prodName, String prodType, Blob prodImg, String prodImgName,
-			Integer prodStock, Integer prodPrice, String prodCompany, String prodIntro, String prodUpDate,
-			String prodOutDate, String prodCategory, Integer prodRate) {
+			Integer prodStock, Integer prodPrice, String prodCompany, String prodIntro, String gameTime,
+			String playerAge, String playerNum, String prodUpDate, String prodOutDate, String prodCategory, 
+			Integer prodRate) {
 		super();
 		this.prod_id = prod_id;
 		this.prodName = prodName;
@@ -47,6 +53,9 @@ public class ProductBean implements Serializable {
 		this.prodOutDate = prodOutDate;
 		this.prodCategory = prodCategory;
 		this.prodRate = prodRate;
+		this.playerAge = playerAge;
+		this.gameTime = gameTime;
+		this.playerNum = playerNum;
 	}
 
 	public ProductBean() {
@@ -123,7 +132,7 @@ public class ProductBean implements Serializable {
 		return prodOutDate;
 	}
 
-	public void setProdOutDate(String productOutDate) {
+	public void setProdOutDate(String prodOutDate) { // 1029把productOutDate修正為prodOutDate
 		this.prodOutDate = prodOutDate;
 	}
 
@@ -161,6 +170,41 @@ public class ProductBean implements Serializable {
 
 	public void setProdRate(Integer prodRate) {
 		this.prodRate = prodRate;
+	}
+	
+	@Transient
+	private String  priceStr = null;	
+	public void setPriceStr(String priceStr) {
+		this.priceStr = priceStr;
+	}
+	@Transient
+	private String  stockStr = null;	
+	public void setStockStr(String stockStr) {
+		this.stockStr = stockStr;
+	}
+
+	public String getPlayerNum() {
+		return playerNum;
+	}
+
+	public void setPlayerNum(String playerNum) {
+		this.playerNum = playerNum;
+	}
+
+	public String getGameTime() {
+		return gameTime;
+	}
+
+	public void setGameTime(String gameTime) {
+		this.gameTime = gameTime;
+	}
+
+	public String getPlayerAge() {
+		return playerAge;
+	}
+
+	public void setPlayerAge(String playerAge) {
+		this.playerAge = playerAge;
 	}
 
 }
