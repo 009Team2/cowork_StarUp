@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import _06_works.dao.WorksDao;
-import _06_works.model.worksBean;
+import _06_works.model.WorksBean;
 
 @Repository
 public class WorksDaoImpl implements WorksDao {
@@ -23,7 +23,7 @@ public class WorksDaoImpl implements WorksDao {
 	//新增一筆資料
 
 	@Override
-	public int saveWorks(worksBean bean) {
+	public int saveWorks(WorksBean bean) {
 		int n = 0;
 		Session session = factory.getCurrentSession();
 		session.save(bean);
@@ -32,18 +32,18 @@ public class WorksDaoImpl implements WorksDao {
 	
 	//查詢一筆資料
 	@Override
-	public worksBean queryWorks(int works_Id)  {
-		worksBean bean = null;
+	public WorksBean queryWorks(int works_Id)  {
+		WorksBean bean = null;
 		Session session = factory.getCurrentSession();
-		bean = session.get(worksBean.class, works_Id);
+		bean = session.get(WorksBean.class, works_Id);
 		return bean;
 	}
 	//修改一筆資料(修改圖片)
 
 	@Override
-	public int updateWorks(worksBean bean, long sizeInBytes, long sizeInBytes_1, long sizeInBytes_2) {
+	public int updateWorks(WorksBean bean, long sizeInBytes, long sizeInBytes_1, long sizeInBytes_2) {
 		int n = 0;
-		String hql = "UPDATE worksBean SET " 
+		String hql = "UPDATE WorksBean SET " 
 				+ " worksName=:worksName,  worksIntro=:worksIntro,  worksImgName=:worksImgName, WorksImg = :WorksImg, "
 				+ "caption_1 = :caption_1, detail_1=:detail_1, captionImgName_1=:captionImgName_1, captionImg_1=:captionImg_1,"
 				+ "caption_2 = :caption_2, detail_2=:detail_2, captionImgName_2=:captionImgName_2, captionImg_2=:captionImg_2";
@@ -71,9 +71,9 @@ public class WorksDaoImpl implements WorksDao {
 	
 
 	@Override
-	public int updateWorks(worksBean bean) {
+	public int updateWorks(WorksBean bean) {
 		int n = 0;
-		String hql = "UPDATE worksBean SET " 
+		String hql = "UPDATE WorksBean SET " 
 				+ " worksName=:worksName,  worksIntro=:worksIntro, "
 				+ "caption_1 = :caption_1, detail_1=:detail_1,"
 				+ "caption_2 = :caption_2, detail_2=:detail_2";	

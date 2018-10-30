@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="works")
-public class worksBean implements Serializable{
+public class WorksBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	Integer works_id;
@@ -32,7 +32,7 @@ public class worksBean implements Serializable{
 	String detail_2;//內文_1
 	String captionImgName_2;//照片_1
 	Blob captionImg_2;
-	public worksBean(Integer works_id, String worksName, String worksIntro, String worksImgName, Blob worksImg,
+	public WorksBean(Integer works_id, String worksName, String worksIntro, String worksImgName, Blob worksImg,
 			Timestamp worksUpDate, String caption_1, String detail_1, String captionImgName_1, Blob captionImg_1,
 			String caption_2, String detail_2, String captionImgName_2, Blob captionImg_2) {
 		super();
@@ -52,7 +52,7 @@ public class worksBean implements Serializable{
 		this.captionImg_2 = captionImg_2;
 	}
 	
-	public worksBean() {}
+	public WorksBean() {}
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

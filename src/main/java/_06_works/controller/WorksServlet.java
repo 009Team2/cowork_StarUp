@@ -25,7 +25,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import _00_init.util.GlobalService;
 import _00_init.util.SystemUtils2018;
 import _01_register.service.UserService;
-import _06_works.model.worksBean;
+import _06_works.model.WorksBean;
 import _06_works.service.WorksService;
 
 
@@ -149,7 +149,7 @@ public class WorksServlet extends HttpServlet {
 					Blob captionImg_1 = SystemUtils2018.fileToBlob(is_1, sizeInBytes_1);
 					Blob captionImg_2 = SystemUtils2018.fileToBlob(is_2, sizeInBytes_2);
 
-					worksBean bean = new worksBean(null, worksName, worksIntro, worksImgName, blobWorkImg, ts, caption_1, detail_1, captionImgName_1, captionImg_1,caption_2, detail_2, captionImgName_2, captionImg_2);
+					WorksBean bean = new WorksBean(null, worksName, worksIntro, worksImgName, blobWorkImg, ts, caption_1, detail_1, captionImgName_1, captionImg_1,caption_2, detail_2, captionImgName_2, captionImg_2);
 					
 					int n = Worksservice.saveWorks(bean);					
 					if (n == 1) {
