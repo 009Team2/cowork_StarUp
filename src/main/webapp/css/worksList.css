@@ -1,3 +1,11 @@
+.carousel-item{
+  background-image: url("../images/night.jpg");  
+  background-size: cover;
+  width:100%;
+ 
+  
+
+}
 
 .p-container{
     margin-top:50px;
@@ -8,6 +16,7 @@
     height: 460px;
     width: 1500px;
     border:2px solid #a492b4;
+     
   }
   
   .square{
@@ -83,9 +92,6 @@
   }
 
 
-  .heart:hover{
-   color: rgb(170, 5, 60);
-  }
 
   /* $(window).scroll(funtion(){
     $().addClass();
