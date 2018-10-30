@@ -30,8 +30,9 @@
                     <button type="button" class="btn btn-primary btn-circle btn-xl btnHidden" style="cursor: default"></button>
                     <button type="button" class="btn btn-info btn-circle btn-xl btnFeature" style="padding: 5px; box-shadow: 3px 3px rgb(46, 46, 46)">信件</button>
                     <button type="button" class="btn btn-primary btn-circle btn-xl btnHidden" style="cursor: default"></button>
-                    <button type="button" class="btn btn-warning btn-circle btn-xl btnFeature" style="padding: 5px; box-shadow: 3px 3px rgb(46, 46, 46)">發表</button>
-                    <button type="button" class="btn btn-primary btn-circle btn-xl btnHidden" style="cursor: default"></button>
+                    <button type="button" class="btn btn-warning btn-circle btn-xl btnFeature" onclick="location.href = '../_06_workUp/upload.jsp' " style="padding: 5px; box-shadow: 3px 3px rgb(46, 46, 46)">發表</button>
+                                
+                   <button type="button" class="btn btn-primary btn-circle btn-xl btnHidden" style="cursor: default"></button>
                     <button type="button" class="btn btn-danger btn-circle btn-xl btnFeature" style="padding: 5px; box-shadow: 3px 3px rgb(46, 46, 46)">收藏</button>
                     <button type="button" class="btn btn-primary btn-circle btn-xl btnHidden" style="cursor: default"></button>
                     <button type="button" class="btn btn-success btn-circle btn-xl btnFeature" style="padding: 5px; box-shadow: 3px 3px rgb(46, 46, 46)">維護</button>

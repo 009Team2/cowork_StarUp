@@ -14,7 +14,7 @@
 	<!-- /> -->
 
 	<Resource name="jdbc/BookDataSQLver" type="javax.sql.DataSource"
-		 username="root" password="jesus299"
+		 username="root" password="54321"
       driverClassName="com.mysql.jdbc.Driver"
       url="jdbc:mysql:///star_up"
       connectionProperties="useUnicode=yes;characterEncoding=utf8;useSSL=false;"    
